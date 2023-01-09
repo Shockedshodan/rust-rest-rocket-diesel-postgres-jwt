@@ -1,0 +1,3 @@
+[global.databases.postgres]
+url = "postgres://test:test@localhost/test"
+
