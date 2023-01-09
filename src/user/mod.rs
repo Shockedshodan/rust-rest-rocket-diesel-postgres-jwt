@@ -36,7 +36,7 @@ async fn read(
     connection
         .run(move |c| User::by_name(&username.0[..], c))
         .await
-        .map(|user| Json(user))
+        .map(Json)
         .ok_or(Status::NotFound)
 }
 

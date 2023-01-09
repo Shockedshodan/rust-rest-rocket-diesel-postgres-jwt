@@ -4,7 +4,6 @@ extern crate jsonwebtoken as jwt;
 use argon2::Config;
 use blake2::{Blake2b512, Digest};
 use jwt::{decode, encode, Algorithm, DecodingKey, EncodingKey, Header, Validation};
-use rocket::serde::uuid::Uuid;
 use serde_derive::{Deserialize, Serialize};
 
 use std::ops::Add;
@@ -33,7 +32,7 @@ impl<'a> FromRequest<'a> for Username {
 
 pub fn read_username_from_token(token: &str) -> Result<String, String> {
     match decode::<Claims>(
-        &token,
+        token,
         &DecodingKey::from_secret("secret".as_ref()),
         &Validation::default(),
     ) {
