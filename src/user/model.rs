@@ -14,7 +14,6 @@ pub struct User {
 
 impl User {
     pub fn list(connection: &PgConnection) -> Vec<User> {
-        
         users::table
             .load::<User>(connection)
             .expect("Error loading users")
