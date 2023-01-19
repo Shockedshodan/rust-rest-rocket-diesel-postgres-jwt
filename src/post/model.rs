@@ -72,9 +72,9 @@ impl Post {
             .filter(posts::user_id.eq(user_id))
             .execute(connection)
         {
-            Ok(1) => return Ok(()),
-            Ok(_) => return Err(Error::NotFound),
-            Err(error) => return Err(error),
+            Ok(1) => Ok(()),
+            Ok(_) => Err(Error::NotFound),
+            Err(error) => Err(error),
         }
     }
 }

@@ -14,10 +14,10 @@ pub struct User {
 
 impl User {
     pub fn list(connection: &PgConnection) -> Vec<User> {
-        let result = users::table
+        
+        users::table
             .load::<User>(connection)
-            .expect("Error loading users");
-        result
+            .expect("Error loading users")
     }
 
     pub fn new(id: i32, name: &str, password_hash: &str) -> User {

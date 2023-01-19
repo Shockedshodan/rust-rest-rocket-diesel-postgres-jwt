@@ -34,6 +34,6 @@ async fn main() {
     r = user::mount(r);
     r = post::mount(r);
 
-    let result = r.launch().await;
+    let _result = r.launch().await;
     println!("Rocket: shutdown.");
 }

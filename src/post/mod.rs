@@ -48,8 +48,8 @@ async fn read(
     connection
         .run(move |c| Post::find_by_id(id, c))
         .await
-        .map(|post| Json(post))
-        .ok_or_else(|| Status::NotFound)
+        .map(Json)
+        .ok_or(Status::NotFound)
 }
 
 #[post("/", data = "<post>")]
